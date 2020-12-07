@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shopee.cart.CartActivity;
@@ -17,7 +17,7 @@ import com.shopee.chat.ChatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navView;
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     ImageView chat,cart;
 
     @Override

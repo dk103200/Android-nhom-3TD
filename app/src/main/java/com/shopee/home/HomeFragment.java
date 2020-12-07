@@ -28,11 +28,15 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.iwgang.countdownview.CountdownView;
 import me.relex.circleindicator.CircleIndicator;
 
 public class HomeFragment extends Fragment {
@@ -58,6 +62,8 @@ public class HomeFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewpager);
         circleIndicator = view.findViewById(R.id.circle_indicator);
 
+        CountdownView mCvCountdown = view.findViewById(R.id.mycountdown);
+        mCvCountdown.start(2*3600*1000);
 
         listPhoto = getListPhoto();
         BannerAdapter bnAdapter = new BannerAdapter(mainActivity, listPhoto);
@@ -89,6 +95,8 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

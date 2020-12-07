@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -26,8 +28,8 @@ import java.util.TimerTask;
 import me.relex.circleindicator.CircleIndicator;
 
 public class LiveFragment extends Fragment {
-
-    private ViewPager viewPager;
+    FragmentManager fm;
+    private ViewPager vpCategory,vpFragment;
     private CircleIndicator circleIndicator;
     private BannerAdapter photoAdapter;
     private List<Integer> mListPhoto;
@@ -44,17 +46,22 @@ public class LiveFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_live, container, false);
         mainActivity = (MainActivity) getActivity();
 
-        viewPager = view.findViewById(R.id.viewpager);
+        vpCategory = view.findViewById(R.id.vp_category);
         circleIndicator = view.findViewById(R.id.circle_indicator);
 
         mListPhoto = getListPhoto();
         photoAdapter = new BannerAdapter(mainActivity, mListPhoto);
-        viewPager.setAdapter(photoAdapter);
+        vpCategory.setAdapter(photoAdapter);
 
-        circleIndicator.setViewPager(viewPager);
+        circleIndicator.setViewPager(vpCategory);
         photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+        setData();
 
         autoSlideImage();
+
+        return view;
+    }
+    public void setData(){
         mList1 = view.findViewById(R.id.list1);
         appList = new ArrayList<>();
 
@@ -69,10 +76,9 @@ public class LiveFragment extends Fragment {
         manager1.setOrientation(LinearLayoutManager.HORIZONTAL);
         mList1.setLayoutManager(manager1);
 
-
-        CustomAdaptor adaptor1 = new CustomAdaptor(mainActivity, appList);
+        CustomAdapter adaptor1 = new CustomAdapter(mainActivity, appList);
         mList1.setAdapter(adaptor1);
-        return view;
+
     }
 
     private List<Integer> getListPhoto() {
@@ -88,7 +94,7 @@ public class LiveFragment extends Fragment {
     }
 
     private void autoSlideImage() {
-        if (mListPhoto == null || mListPhoto.isEmpty() || viewPager == null) {
+        if (mListPhoto == null || mListPhoto.isEmpty() || vpCategory == null) {
             return;
         }
 
@@ -103,18 +109,22 @@ public class LiveFragment extends Fragment {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        int currentItem = viewPager.getCurrentItem();
+                        int currentItem = vpCategory.getCurrentItem();
                         int totalItem = mListPhoto.size() - 1;
                         if (currentItem < totalItem) {
                             currentItem++;
-                            viewPager.setCurrentItem(currentItem);
+                            vpCategory.setCurrentItem(currentItem);
                         } else {
-                            viewPager.setCurrentItem(0);
+                            vpCategory.setCurrentItem(0);
                         }
                     }
                 });
             }
         }, 400, 2500);
     }
+    public void setVpFragment(){
+
+    }
+
 }
 

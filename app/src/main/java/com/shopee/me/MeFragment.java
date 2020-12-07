@@ -2,6 +2,7 @@ package com.shopee.me;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,8 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.shopee.CustomSheet;
+import com.shopee.DetailProductActivity;
 import com.shopee.MainActivity;
 import com.shopee.R;
+import com.shopee.chat.ChatActivity;
 import com.shopee.feed.List_Menu;
 
 import java.util.ArrayList;
@@ -32,7 +35,8 @@ import java.util.ArrayList;
 public class MeFragment extends Fragment {
     private View view, viewSign;
     private MainActivity mainActivity;
-    TextView btn_login, btn_signup;
+    TextView btn_login, btn_signup ;
+    ImageView btn_account;
     private FragmentActivity myContext;
 
     @Override
@@ -46,40 +50,16 @@ public class MeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_me, container, false);
         viewSign = inflater.inflate(R.layout.fragment_login, container, false);
         init_ListCaNhan();
-
-        btn_login = view.findViewById(R.id.bt_dangNhap);
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        openLogin();
+        openSignup();
+        btn_account = view.findViewById(R.id.btn_account);
+        btn_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                openLogin();
+                Intent myIntent = new Intent(myContext, AccountSettingActivity.class);
+                startActivity(myIntent);
             }
         });
-
-        btn_signup = view.findViewById(R.id.bt_dangKy);
-        btn_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                BottomSheetDialog signupDialog = new BottomSheetDialog(myContext);
-                signupDialog.setContentView(R.layout.fragment_signup);
-
-                ImageView back = signupDialog.findViewById(R.id.back);
-
-                back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        signupDialog.dismiss();
-                    }
-
-                });
-
-
-                signupDialog.show();
-
-            }
-        });
-
         return view;
     }
 
@@ -106,29 +86,66 @@ public class MeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+    public void setBack(BottomSheetDialog bottomSheetDialog) {
 
-
-    public void openLogin() {
-        BottomSheetDialog signupDialog = new BottomSheetDialog(myContext);
-        signupDialog.setContentView(R.layout.fragment_login);
-
-        ImageView back = signupDialog.findViewById(R.id.back);
+        ImageView back = bottomSheetDialog.findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signupDialog.dismiss();
+                bottomSheetDialog.dismiss();
             }
 
         });
-
-
-        signupDialog.show();
     }
 
-    public void openSignup() {
+    public void openAccount(BottomSheetDialog bottomSheetDialog) {
 
-//        CustomSheet customSheet = new CustomSheet(R.layout.fragment_login);
-//        customSheet.show(myContext.getSupportFragmentManager(), "custom_sheet");
+        TextView login = bottomSheetDialog.findViewById(R.id.btn_login_dialog);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_account.setImageResource(R.drawable.ic_settings);
+                bottomSheetDialog.dismiss();
+            }
+
+        });
+    }
+
+    public void openLogin() {
+        btn_login = view.findViewById(R.id.bt_dangNhap);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
+                dialog.setContentView(R.layout.fragment_login);
+
+                setBack(dialog);
+                openAccount(dialog);
+
+                dialog.show();
+            }
+        });
+
+
+    }
+
+
+
+    public void openSignup() {
+        btn_signup = view.findViewById(R.id.bt_dangKy);
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
+                dialog.setContentView(R.layout.fragment_signup);
+                setBack(dialog);
+                dialog.show();
+
+            }
+        });
     }
 }

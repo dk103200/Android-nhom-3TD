@@ -53,7 +53,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
-
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.github.iwgang:countdownview:2.1.6'
 
 //tuấn
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
