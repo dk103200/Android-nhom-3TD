@@ -62,7 +62,7 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
 
                 BottomSheetDialog signupDialog = new BottomSheetDialog(myContext);
-                signupDialog.setContentView(R.layout.fragment_login);
+                signupDialog.setContentView(R.layout.fragment_signup);
 
                 ImageView back = signupDialog.findViewById(R.id.back);
 
@@ -109,22 +109,21 @@ public class MeFragment extends Fragment {
 
 
     public void openLogin() {
-//
-//        final BottomSheetDialog loginDialog = new BottomSheetDialog(mainActivity);
-//        View loginView = LayoutInflater.from(myContext.getApplicationContext()).inflate(
-//                R.layout.fragment_login,   findViewById(R.id.login_dialog)
-//        );
-//        loginView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loginDialog.dismiss();
-//
-//            }
-//        });
-//        loginDialog.setContentView(loginView);
-//        loginDialog.show();
-//        CustomSheet customSheet = new CustomSheet(R.layout.fragment_login);
-//        customSheet.show(myContext.getSupportFragmentManager(), "custom_sheet");
+        BottomSheetDialog signupDialog = new BottomSheetDialog(myContext);
+        signupDialog.setContentView(R.layout.fragment_login);
+
+        ImageView back = signupDialog.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signupDialog.dismiss();
+            }
+
+        });
+
+
+        signupDialog.show();
     }
 
     public void openSignup() {
