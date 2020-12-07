@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setbtn_Cart();
+        setbtn_Chat();
 
         navView = findViewById(R.id.bottom_nav);
         viewPager = findViewById(R.id.view_pager);
@@ -31,14 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setViewPager();
 
 
-        chat = findViewById(R.id.chat);
-        chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openChat();
 
-            }
-        });
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -85,12 +80,19 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
     }
 
-    public void openChat(){
-        Intent myIntent = new Intent(this, ChatActivity.class);
-        startActivity(myIntent);
+    public void setbtn_Chat(){
+        chat = findViewById(R.id.chat);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
     }
 
-    public void openCart(){
+    public void setbtn_Cart(){
         cart = findViewById(R.id.cart);
         cart.setOnClickListener(new View.OnClickListener() {
             @Override

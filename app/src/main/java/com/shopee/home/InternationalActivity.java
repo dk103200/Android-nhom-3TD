@@ -1,5 +1,6 @@
 package com.shopee.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shopee.MainActivity;
 import com.shopee.R;
+import com.shopee.cart.CartActivity;
 import com.shopee.home.danhsachloai.AdapterLoai;
 import com.shopee.home.danhsachloai.loai;
 import com.shopee.home.sanpham.AdapterSanPham;
@@ -19,14 +21,15 @@ import com.shopee.home.sanpham.sanpham;
 import java.util.ArrayList;
 
 public class InternationalActivity extends AppCompatActivity {
-    private ImageView back;
+    private ImageView back,cart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_international);
 
-        Back();
-
+        setbtn_Back();
+        setbtn_Cart();
         //Gọi recylerview sản phẩm cuối năm
         init_ListSPCuoiNam();
         //Gọi loại danh sách
@@ -72,7 +75,7 @@ public class InternationalActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
-    public void Back(){
+    public void setbtn_Back(){
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,5 +83,16 @@ public class InternationalActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void setbtn_Cart(){
+        cart = findViewById(R.id.cart);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(InternationalActivity.this, CartActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
     }
 }

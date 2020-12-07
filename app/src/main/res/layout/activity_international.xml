@@ -600,7 +600,7 @@
             android:layout_centerInParent="true"
             android:text="HÀNG QUỐC TẾ"
             android:textColor="#0B0000"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/more"

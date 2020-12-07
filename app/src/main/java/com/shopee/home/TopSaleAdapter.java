@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shopee.DetailActivity;
+import com.shopee.DetailProductActivity;
 import com.shopee.R;
 
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class TopSaleAdapter extends RecyclerView.Adapter<TopSaleAdapter.viewHode
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(context, DetailActivity.class);
+                Intent myIntent = new Intent(context, DetailProductActivity.class);
                 context.startActivity(myIntent);
 
             }

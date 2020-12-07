@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.shopee.MainActivity;
+import com.shopee.OrderActivity;
 import com.shopee.chat.ChatActivity;
 import com.shopee.R;
 
@@ -19,36 +24,25 @@ import java.util.ArrayList;
 public class CartActivity extends AppCompatActivity {
     ArrayList<Cart> listCarts;
     ImageView back, chat;
+    TextView tv_order;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        chat = findViewById(R.id.chat);
-        chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openChat();
-            }
-        });
-
+        Back();
+        openChat();
+        openOrder();
         initCart();
 
     }
 
+
     public void initCart() {
         RecyclerView rcv_Cart = findViewById(R.id.rcv_cart);
         rcv_Cart.setHasFixedSize(true);
-        GridLayoutManager gird = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        LinearLayoutManager gird = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         rcv_Cart.setLayoutManager(gird);
 
         listCarts = new ArrayList<>();
@@ -61,8 +55,37 @@ public class CartActivity extends AppCompatActivity {
         rcv_Cart.setAdapter(CartAdapter);
 
     }
-    public void openChat(){
-        Intent myIntent = new Intent(this, ChatActivity.class);
-        startActivity(myIntent);
+
+    public void Back() {
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
+    public void openChat() {
+        chat = findViewById(R.id.chat);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CartActivity.this, ChatActivity.class);
+                startActivity(myIntent);
+            }
+        });
+    }
+    public void openOrder() {
+        tv_order = findViewById(R.id.tv_buynow);
+        tv_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CartActivity.this, OrderActivity.class);
+                startActivity(myIntent);
+            }
+        });
+    }
+
+
 }

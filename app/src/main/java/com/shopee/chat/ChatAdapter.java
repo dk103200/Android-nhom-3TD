@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shopee.ItemClickListener;
 import com.shopee.R;
 
 import java.util.ArrayList;
@@ -45,11 +45,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.viewHoder> {
         holder.tvTime.setText(chats.get(position).getTime());
         holder.img.setImageResource(chats.get(position).getImg());
 
-        holder.setItemClickListener(new ItemClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-                if(!isLongClick)
-                    Log.d(TAG, "savedInstanceState is null"+chats.get(position));
+            public void onClick(View v) {
+
+                Toast.makeText(context, chats.get(position).getName(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -69,10 +70,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.viewHoder> {
     }
 
 
-    public class viewHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class viewHoder extends RecyclerView.ViewHolder {
         TextView tvName, tvDetail, tvTime;
         ImageView img;
-        private ItemClickListener itemClickListener;
 
         public viewHoder(@NonNull View itemView) {
             super(itemView);
@@ -81,20 +81,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.viewHoder> {
             tvTime = itemView.findViewById(R.id.tv_time);
             img = itemView.findViewById(R.id.img_notifi);
 
-            itemView.setOnClickListener(this);
         }
-
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View v) {
-            itemClickListener.onClick(v,getAdapterPosition(),false);
-        }
-
-
     }
-
-
 }

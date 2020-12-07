@@ -2,6 +2,7 @@ package com.shopee.cart;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shopee.ItemClickListener;
 import com.shopee.R;
+import com.shopee.home.InternationalActivity;
 
 import java.util.ArrayList;
 
@@ -48,12 +50,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
         holder.img.setImageResource(carts.get(position).getImg());
         holder.solg.setText(String.valueOf(carts.get(position).getSolg()));
 
-        holder.setItemClickListener(new ItemClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view, int position, boolean isLongClick) {
+            public void onClick(View v) {
 
-                if(!isLongClick)
-                   Log.d(TAG, "savedInstanceState is null"+carts.get(position));
+                Toast.makeText(context, carts.get(position).getName(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -62,6 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
     public int getItemCount() {
         return carts.size();
     }
+
     public void addItem(int position, Cart data) {
         carts.add(position, data);
         notifyItemInserted(position);
@@ -73,11 +76,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
     }
 
 
-    public class viewHoder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
+    public class viewHoder extends RecyclerView.ViewHolder {
         TextView tvName, tvProduct, tvGia;
         ImageView img;
         EditText solg;
-        private ItemClickListener itemClickListener;
 
         public viewHoder(@NonNull View itemView) {
             super(itemView);
@@ -85,27 +87,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
             tvProduct = itemView.findViewById(R.id.tv_product);
             tvGia = itemView.findViewById(R.id.tv_gia);
             img = itemView.findViewById(R.id.img_product);
-            solg =  itemView.findViewById(R.id.edt_solg);
+            solg = itemView.findViewById(R.id.edt_solg);
 
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
-        }
-
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View v) {
-            itemClickListener.onClick(v,getAdapterPosition(),false);
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            itemClickListener.onClick(v,getAdapterPosition(),true);
-            return true;
         }
     }
-
-
 }
