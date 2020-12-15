@@ -12,15 +12,18 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.shopee.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BannerAdapter extends PagerAdapter {
     private Context context;
-    private List<Integer> listPhoto;
+    private ArrayList<Integer> listPhoto;
 
 
+    public BannerAdapter() {
+    }
 
-    public BannerAdapter(Context context, List<Integer> listPhoto) {
+    public BannerAdapter(Context context, ArrayList<Integer> listPhoto) {
         this.context = context;
         this.listPhoto = listPhoto;
     }

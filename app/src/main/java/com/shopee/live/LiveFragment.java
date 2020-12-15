@@ -32,7 +32,7 @@ public class LiveFragment extends Fragment {
     private ViewPager vpCategory,vpFragment;
     private CircleIndicator circleIndicator;
     private BannerAdapter photoAdapter;
-    private List<Integer> mListPhoto;
+    private ArrayList<Integer> mListPhoto;
     private Timer mTimer;
     RecyclerView mList1;
     List<App> appList;
@@ -81,8 +81,8 @@ public class LiveFragment extends Fragment {
 
     }
 
-    private List<Integer> getListPhoto() {
-        List<Integer> list = new ArrayList<>();
+    private ArrayList<Integer> getListPhoto() {
+        ArrayList<Integer> list = new ArrayList<>();
         list.add(R.drawable.shopee1);
         list.add(R.drawable.shopee2);
         list.add(R.drawable.shopee3);

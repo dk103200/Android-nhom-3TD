@@ -26,8 +26,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+}
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -38,6 +40,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.2'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -51,11 +54,22 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.jakewharton:butterknife:10.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
-    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.github.iwgang:countdownview:2.1.6'
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database'
+    // Declare the dependencies for any other desired Firebase products
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
 
 //tuấn
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

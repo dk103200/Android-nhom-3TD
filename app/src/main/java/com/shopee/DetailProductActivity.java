@@ -20,7 +20,7 @@ import java.util.List;
 public class DetailProductActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private List<Integer> listPhoto;
+    private ArrayList<Integer> listPhoto;
     ImageView back,cart,chat;
 
     @Override
@@ -37,8 +37,8 @@ public class DetailProductActivity extends AppCompatActivity {
 
     }
 
-    private List<Integer> getListPhoto() {
-        List<Integer> list = new ArrayList<>();
+    private ArrayList<Integer> getListPhoto() {
+        ArrayList<Integer> list = new ArrayList<>();
         list.add(R.drawable.shop1);
         list.add(R.drawable.shop2);
         list.add(R.drawable.shop3);

@@ -16,6 +16,9 @@ public class TopSale {
         return gia;
     }
 
+    public TopSale() {
+    }
+
     public void setGia(String gia) {
         this.gia = gia;
     }
