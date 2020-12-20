@@ -1,11 +1,12 @@
 package com.shopee;
 
 public class Product {
+    private int id;
     private String name;
     private String img;
     private String gia;
     private String gia_km;
-    private String sao;
+    private float sao;
     private String num_ratting;
 
     public Product() {
@@ -19,7 +20,16 @@ public class Product {
         this.gia_km = gia_km;
     }
 
-    public Product(String name, String img, String gia, String gia_km, String sao, String num_ratting) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Product(int id, String name, String img, String gia, String gia_km, float sao, String num_ratting) {
+        this.id = id;
         this.name = name;
         this.img = img;
         this.gia = gia;
@@ -27,6 +37,8 @@ public class Product {
         this.sao = sao;
         this.num_ratting = num_ratting;
     }
+
+
 
     public String getName() {
         return name;
@@ -52,11 +64,11 @@ public class Product {
         this.gia = gia;
     }
 
-    public String getSao() {
+    public float getSao() {
         return sao;
     }
 
-    public void setSao(String sao) {
+    public void setSao(float sao) {
         this.sao = sao;
     }
 

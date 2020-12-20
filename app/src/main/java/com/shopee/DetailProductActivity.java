@@ -2,6 +2,7 @@ package com.shopee;
 
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.shopee.cart.CartActivity;
 import com.shopee.chat.ChatActivity;
 import com.shopee.home.BannerAdapter;
+import com.shopee.home.FlashSale;
 import com.shopee.home.TopSale;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,7 @@ public class DetailProductActivity extends AppCompatActivity {
     private ArrayList<Integer> listPhoto;
     private TextView tv_name,tv_gia,tv_km,tv_rating;
     private RatingBar ratingBar;
-    ImageView back,cart,chat;
+    ImageView back,cart,chat,add_cart;
     private DatabaseReference mData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,14 +48,16 @@ public class DetailProductActivity extends AppCompatActivity {
         setbtn_Back();
         setbtn_Chat();
         setData();
+
         viewPager = findViewById(R.id.viewpager);
-        listPhoto = getListPhoto();
+        listPhoto = getListPhoto ();
         BannerAdapter bnAdapter = new BannerAdapter(this, listPhoto);
         viewPager.setAdapter(bnAdapter);
 
     }
 
     public void init (){
+        add_cart = findViewById(R.id.add_card);
         tv_name = findViewById(R.id.name_product);
         tv_gia = findViewById(R.id.gia_product);
         tv_km = findViewById(R.id.gia_km);
@@ -63,14 +68,30 @@ public class DetailProductActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("id",0);
         mData = FirebaseDatabase.getInstance().getReference().child("Product");
-        mData.orderByKey().equalTo(id).addChildEventListener(new ChildEventListener() {
+        mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Product values =  snapshot.getValue (Product.class);
-                tv_name.setText(values.getName());
-                tv_gia.setText(values.getGia());
-                tv_km.setText(values.getGia_km());
-                tv_rating.setText(values.getNum_ratting() );
+
+
+//                tv_tmp.append(values+ "\n");
+                if (values.getId() == id){
+                    ImageView img = new ImageView(getApplicationContext());
+                    Picasso.with(getApplicationContext()).load(values.getImg()).into(img);
+                    img.setScaleType(ImageView.ScaleType.FIT_XY);
+                    listPhoto.add(img);
+                    listPhoto.add(R.drawable.shop1);
+                    listPhoto.add(R.drawable.shop2);
+                    listPhoto.add(R.drawable.shop3);
+                    tv_name.setText(values.getName());
+                    tv_gia.setText(values.getGia());
+                    tv_km.setText(values.getGia_km());
+                    tv_gia.setPaintFlags(tv_km.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG );
+                    tv_rating.setText(String.valueOf(values.getSao()) );
+                    ratingBar.setRating(values.getSao());
+
+                }
+
 
             }
 
