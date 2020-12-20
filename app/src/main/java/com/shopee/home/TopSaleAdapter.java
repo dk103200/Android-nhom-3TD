@@ -43,7 +43,10 @@ public class TopSaleAdapter extends RecyclerView.Adapter<TopSaleAdapter.viewHode
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent myIntent = new Intent(context, DetailProductActivity.class);
+                myIntent.putExtra("id",position);
+
                 context.startActivity(myIntent);
 
             }

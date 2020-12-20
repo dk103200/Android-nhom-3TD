@@ -290,8 +290,11 @@ public class HomeFragment extends Fragment {
                 FlashSale values =  snapshot.getValue (FlashSale.class);
 
 //                tv_tmp.append(values+ "\n");
-                listFlashSales.add(values);
-                flashSaleAdapter.notifyDataSetChanged();
+                if (values.getSell().toString().equals("ĐÃ BÁN 2")){
+                    listFlashSales.add(values);
+                    flashSaleAdapter.notifyDataSetChanged();
+                }
+
 
             }
 

@@ -35,6 +35,7 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/name_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="50dp"
@@ -43,6 +44,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/gia_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -51,6 +53,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/gia_km"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="đ 5.700.000 - đ 5.999.000"
@@ -76,6 +79,7 @@
                         android:stepSize="0.5" />
 
                     <TextView
+                        android:id="@+id/rating_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
