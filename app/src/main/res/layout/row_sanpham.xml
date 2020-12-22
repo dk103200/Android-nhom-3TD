@@ -13,9 +13,7 @@
             android:id="@+id/anh_SanPham"
             android:layout_width="match_parent"
             android:layout_height="170dp"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="170dp"/>
+
         <TextView
             android:id="@+id/tv_ThongTinSP"
             android:layout_marginTop="5dp"

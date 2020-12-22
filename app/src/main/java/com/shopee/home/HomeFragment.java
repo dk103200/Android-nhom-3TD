@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -27,7 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.shopee.MainActivity;
+import com.shopee.Product;
 import com.shopee.R;
+import com.shopee.home.sanpham.AdapterSanPham;
+import com.shopee.home.sanpham.sanpham;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -47,9 +52,11 @@ import me.relex.circleindicator.CircleIndicator;
 public class HomeFragment extends Fragment {
     private View view;
     private MainActivity mainActivity;
+    private GridView gv_product;
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private ArrayList<Integer> listPhoto;
+    private ArrayList<Product> listProduct;
     private Timer timer;
     private ImageView imgBarcode;
     private DatabaseReference mData;
@@ -89,7 +96,64 @@ public class HomeFragment extends Fragment {
 
         initDanhMuc();
 
+        initListProduct();
         return view;
+    }
+
+    private void initListProduct() {
+            RecyclerView recyclerView = view.findViewById(R.id.rcv_product);
+            recyclerView.setHasFixedSize(true);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,RecyclerView.VERTICAL,false);
+            recyclerView.setLayoutManager(gridLayoutManager);
+            ArrayList<sanpham> arrayList =  new ArrayList<>();
+
+            arrayList.add(new sanpham("Áo sơ mi nữ tay phồng theo phong cách retro",R.drawable.sp_aoden,233000 ,118000,5,897));
+            arrayList.add(new sanpham("Giày vớ tập đi chống trượt hình động vật dễ thương cho bé",R.drawable.sp_depchobe,68000 ,34000,4,367));
+            arrayList.add(new sanpham("Áo Hoodie Tay Dài In Hình Khủng Long Cho Nam",R.drawable.sp_hoodie,201000 ,101000,4,176));
+            arrayList.add(new sanpham("Áo tay dài dáng rộng cổ tròn thời trang phong cách cho nam",R.drawable.sp_aotaydai,168000 ,100000,5,67));
+            arrayList.add(new sanpham("Áo Thun Lửng Tay Ngắn Thêu Hình Bướm Quyến Rũ Cho Nữ",R.drawable.sp_aothun,100000 ,50000,5,239));
+
+            AdapterSanPham adapter = new AdapterSanPham(arrayList, getContext(),R.layout.row_sanpham);
+            recyclerView.setAdapter(adapter);
+//
+//        mData = FirebaseDatabase.getInstance().getReference().child("Product");
+//        mData.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//                Product values =  snapshot.getValue (Product.class);
+//
+////                tv_tmp.append(values+ "\n");
+//                listProduct.add(values);
+//                categoryAdapter.notifyDataSetChanged();
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//
+//        });
+//
+//
+//
+//         =new itemAdapter(this , R.layout.item_sanpham,listProduct);
+//        gridview.setAdapter(itemAdapter);
     }
 
 

@@ -39,16 +39,11 @@ public class MeFragment extends Fragment {
     ImageView btn_account;
     private FragmentActivity myContext;
 
-    @Override
-    public void onAttach(Activity activity) {
-        myContext = (FragmentActivity) activity;
-        super.onAttach(activity);
-    }
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_me, container, false);
-        viewSign = inflater.inflate(R.layout.fragment_login, container, false);
+//        viewSign = inflater.inflate(R.layout.fragment_login, container, false);
         init_ListCaNhan();
         openLogin();
         openSignup();
@@ -56,7 +51,7 @@ public class MeFragment extends Fragment {
         btn_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(myContext, AccountSettingActivity.class);
+                Intent myIntent = new Intent(getContext(), AccountSettingActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -99,19 +94,19 @@ public class MeFragment extends Fragment {
         });
     }
 
-    public void openAccount(BottomSheetDialog bottomSheetDialog) {
-
-        TextView login = bottomSheetDialog.findViewById(R.id.btn_login_dialog);
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn_account.setImageResource(R.drawable.ic_settings);
-                bottomSheetDialog.dismiss();
-            }
-
-        });
-    }
+//    public void openAccount(BottomSheetDialog bottomSheetDialog) {
+//
+//        TextView login = bottomSheetDialog.findViewById(R.id.btn_login_dialog);
+//
+//        login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                btn_account.setImageResource(R.drawable.ic_settings);
+//                bottomSheetDialog.dismiss();
+//            }
+//
+//        });
+//    }
 
     public void openLogin() {
         btn_login = view.findViewById(R.id.bt_dangNhap);
@@ -119,13 +114,16 @@ public class MeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
-                dialog.setContentView(R.layout.fragment_login);
-
-                setBack(dialog);
-                openAccount(dialog);
-
-                dialog.show();
+                Intent myIntent = new Intent(getContext(), dangnhap.class);
+                startActivity(myIntent);
+//
+//                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
+//                dialog.setContentView(R.layout.fragment_login);
+//
+//                setBack(dialog);
+//                openAccount(dialog);
+//
+//                dialog.show();
             }
         });
 
@@ -140,10 +138,13 @@ public class MeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
-                dialog.setContentView(R.layout.fragment_signup);
-                setBack(dialog);
-                dialog.show();
+
+                Intent myIntent = new Intent(getContext(), dangky_activity.class);
+                startActivity(myIntent);
+//                BottomSheetDialog dialog = new BottomSheetDialog(myContext);
+//                dialog.setContentView(R.layout.fragment_signup);
+//                setBack(dialog);
+//                dialog.show();
 
             }
         });

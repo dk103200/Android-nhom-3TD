@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
-                android:id="@+id/et_pass"
+                android:id="@+id/edt_pass"
                 android:inputType="number"
                 android:maxLines="1"
                 android:layout_width="match_parent"
@@ -122,7 +122,7 @@
             android:background="#9F9F9F"/>
         <TextView
 
-            android:id="@+id/btn_login_dialog"
+            android:id="@+id/btn_login"
             android:text="Đăng nhập"
             android:background="#EEE"
             android:textColor="@color/icon_color"

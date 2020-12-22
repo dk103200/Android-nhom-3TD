@@ -14,10 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amulyakhare.textdrawable.TextDrawable;
 import com.shopee.Model.Order;
 import com.shopee.R;
-import com.shopee.cart.Cart;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -45,9 +43,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
 
     @Override
     public void onBindViewHolder(@NonNull viewHoder holder, int position) {
-        TextDrawable drawable = TextDrawable.builder()
-                .buildRound(""+ carts.get(position).getQuantity(), Color.RED);
-        holder.img.setImageDrawable(drawable);
+//        TextDrawable drawable = TextDrawable.builder()
+//                .buildRound(""+ carts.get(position).getQuantity(), Color.RED);
+//        holder.img.setImageDrawable(drawable);
 
         Locale locale = new Locale("en", "US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);

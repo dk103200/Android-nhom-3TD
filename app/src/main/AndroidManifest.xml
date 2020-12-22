@@ -21,10 +21,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopee">
-        <activity android:name=".FirebaseActivity">
+        <activity android:name=".me.dangnhap">
 
         </activity>
 
+        <activity android:name=".me.dangky_activity">
+
+        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
