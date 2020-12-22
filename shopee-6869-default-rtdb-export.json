@@ -1,0 +1,652 @@
+{
+  "BannerHome" : [ 2131165287, 2131165288, 2131165289, 2131165290, 2131165291, 2131165292, 2131165293, 2131165294, 2131165295 ],
+  "CategoryHome" : [ {
+    "img" : 2131165412,
+    "name" : "NowFood - Bữa Ngon 0đ"
+  }, {
+    "img" : 2131165384,
+    "name" : "Deal Gần Bạn - Chỉ từ 1K"
+  }, {
+    "img" : 2131165577,
+    "name" : "Hàng Quốc Tế - Tri Ân"
+  }, {
+    "img" : 2131165578,
+    "name" : "Freeship Xtra"
+  }, {
+    "img" : 2131165298,
+    "name" : "Beauty Club - Mê Làm Đẹp"
+  }, {
+    "img" : 2131165580,
+    "name" : "Hoàn Xu Đơn Bất Kỳ"
+  }, {
+    "img" : 2131165349,
+    "name" : "Shopee Premium"
+  }, {
+    "img" : 2131165303,
+    "name" : "Brand Discount"
+  }, {
+    "img" : 2131165483,
+    "name" : "Shopee Mum's Club"
+  }, {
+    "img" : 2131165350,
+    "name" : "Săn Siêu Sale"
+  }, {
+    "img" : 2131165348,
+    "name" : "Tech Zone - Siêu Thị Điện Thoại"
+  }, {
+    "img" : 2131165299,
+    "name" : "Book Club - Sách Sale Sốc"
+  }, {
+    "img" : 2131165424,
+    "name" : "Nạp Thẻ & Dịch Vụ"
+  }, {
+    "img" : 2131165400,
+    "name" : "Shopee Mall"
+  }, {
+    "img" : 2131165413,
+    "name" : "Deal Sốc Từ 1K"
+  }, {
+    "img" : 2131165367,
+    "name" : "Vận May 1Đ"
+  }, {
+    "img" : 2131165385,
+    "name" : "Miễn Phí Vẫn Chuyển"
+  }, {
+    "img" : 2131165386,
+    "name" : "Săn Xu Mỗi Ngày"
+  }, {
+    "img" : 2131165401,
+    "name" : "Shopee Mart"
+  }, {
+    "img" : 2131165385,
+    "name" : "Mã Giảm Giá"
+  }, {
+    "img" : 2131165414,
+    "name" : "Ưu Đãi Đối Tác"
+  }, {
+    "img" : 2131165425,
+    "name" : "KOL Club"
+  } ],
+  "FlashSaleHome" : [ {
+    "gia" : "đ 4.000",
+    "img" : 2131165354,
+    "sell" : "ĐÃ BÁN 2"
+  }, {
+    "gia" : "đ 185.000",
+    "img" : 2131165356,
+    "sell" : "ĐÃ BÁN 1"
+  }, {
+    "gia" : "đ 75.000",
+    "img" : 2131165359,
+    "sell" : "ĐÃ BÁN 3"
+  }, {
+    "gia" : "đ 179.000",
+    "img" : 2131165355,
+    "sell" : "ĐÃ BÁN 2"
+  }, {
+    "gia" : "252.000",
+    "img" : 2131165357,
+    "sell" : "ĐÃ BÁN 4"
+  }, {
+    "gia" : "đ 455.000",
+    "img" : 2131165358,
+    "sell" : "ĐÃ BÁN 3"
+  } ],
+  "Product": [
+    {
+      "id": 0,
+      "img": "https://cf.shopee.vn/file/6d3c20c6e9fb283a6af08e9b8a3ed0e0_tn",
+      "gia": "431000",
+      "gia_km": "300000",
+      "name": "Ghế xoay văn phòng VP405 - Ghế làm việc Thay đổi chiều cao - xoay 360 độ",
+      "num_ratting": "300",
+      "sao": 4
+    },
+    {
+      "id": 1,
+      "img": "https://cf.shopee.vn/file/e0c23982f8e6ca68625ff1ae7f039fab_tn",
+      "gia": "132000",
+      "gia_km": "80000",
+      "name": "Dây cáp VENTION kết nối âm thanh chuyển đổi cổng HDMI sang VGA HD 1080P",
+      "num_ratting": "100",
+      "sao": 5
+    },
+    {
+      "id": 2,
+      "img": "https://cf.shopee.vn/file/e0c23982f8e6ca68625ff1ae7f039fab_tn",
+      "gia": "3190000",
+      "gia_km": "3339000",
+      "name": "Mã ELCLDEC5 giảm 5% đơn 500K] Màn Hình Samsung LF24T350FHEXXV 24 FHD IPS 75Hz 5ms AMD Freesync Viền Mỏng 3 Cạnh Chân-V",
+      "num_ratting": "90",
+      "sao": 3
+    },
+    {
+      "id": 3,
+      "img": "https://cf.shopee.vn/file/53e96d0e50db545246b42670ada39c12_tn",
+      "gia": "70000",
+      "gia_km": "59000",
+      "name": "CHÂN VÁY KAKI DÀI XOÈ TRƠN TRẮNG ĐEN BE - CHÂN VÁY",
+      "num_ratting": "100",
+      "sao": 4.5
+    },
+    {
+      "id": 4,
+      "img": "https://cf.shopee.vn/file/4ec15382fe0c968bfcb7d44b93df6123&quot",
+      "gia": "3999000",
+      "gia_km": "3333000",
+      "name": "Màn Hình Siêu Mỏng Asus VZ249HE 23.8 Full HD (1920x1080) IPS Bảo Vệ Mắt",
+      "num_ratting": "60",
+      "sao": 4.2
+    },
+    {
+      "id": 5,
+      "img": "https://cf.shopee.vn/file/1489bd525a6ca748c3544ba00209aca5",
+      "gia": "90000",
+      "gia_km": "71000",
+      "name": "Combo Bánh pía kim sa Tân Huê Viên 10 bánh 10 vị khác nhau",
+      "num_ratting": "200",
+      "sao": 3
+    },
+    {
+      "id": 6,
+      "img": "https://cf.shopee.vn/file/97aa7fd30ed55fed6ace9c6b5dceb093",
+      "gia": "2198000",
+      "gia_km": "599000",
+      "name": "COMBO GHẾ CHƠI GAME + BÀN GỖ",
+      "num_ratting": "70",
+      "sao": 5
+    },
+    {
+      "id": 7,
+      "img": "https://cf.shopee.vn/file/f3dd55185434c38a3ddf84f27383927a",
+      "gia": "148700",
+      "gia_km": "99000",
+      "name": "Chân váy chữ A ngắn màu trơn dễ phối đồ",
+      "num_ratting": "44",
+      "sao": 4
+    },
+    {
+      "id": 8,
+      "img": "https://cf.shopee.vn/file/840054421db282c7891cac633b1b393f",
+      "gia": "49607",
+      "gia_km": "27200",
+      "name": " Kính Mát Mắt Mèo Chống Tia UV400 Phong Cách Hàn Quốc",
+      "num_ratting": "121",
+      "sao": 3
+    },
+    {
+      "id": 9,
+      "img": "https://cf.shopee.vn/file/3a2f0f793dfc1b44a0ca289a50ccb2d9",
+      "gia": "257000",
+      "gia_km": "167000",
+      "name": "Áo Sơ Mi Tay Ngắn / Chân Váy Ngắn Nữ Tính",
+      "num_ratting": "123",
+      "sao": 4.7
+    },
+    {
+      "id": 10,
+      "img": "https://cf.shopee.vn/file/06a1a3437d3848a0b6e082a6ad46f28d",
+      "gia": "150000",
+      "gia_km": "99000",
+      "name": "Kẹo Alpenliebe hương vị xòai nhân muối ớt và các hương đa dạng khác",
+      "num_ratting": "190",
+      "sao": 4.3
+    },
+    {
+      "id": 11,
+      "img": "https://cf.shopee.vn/file/310bdc4af5b365a61562120e90a54182",
+      "gia": "55000",
+      "gia_km": "44000",
+      "name": "Ví nam chất đẹp thời trang cao cấp Bóp da PU nhiều ngăn phong cách trẻ sành điệu gu nam tính nhập khẩu chính hãng",
+      "num_ratting": "99",
+      "sao": 4.7
+    },
+    {
+      "id": 12,
+      "img": "https://cf.shopee.vn/file/fe4f3b8c1a4af99bf8a0aa99bd740830",
+      "gia": "60000",
+      "gia_km": "35000",
+      "name": "Nón bucket tròn vành GENZ trơn nhiều màu phong cách Ulzzang Unisex ZA005",
+      "num_ratting": "99",
+      "sao": 3.7
+    },
+    {
+      "id": 13,
+      "img": "https://cf.shopee.vn/file/d8a16df92ecbe62514c2630f88e71b18",
+      "gia": "28000",
+      "gia_km": "20000",
+      "name": "Mũ Len Hàn Quốc Beanie Nhiều Màu",
+      "num_ratting": "200",
+      "sao": 4.9
+    },
+    {
+      "id": 14,
+      "img": "https://cf.shopee.vn/file/1099b8c294d90e475a88140658b850ae",
+      "gia": "180000",
+      "gia_km": "109000",
+      "name": "Quần kaki nam trung niên ống suông",
+      "num_ratting": "200",
+      "sao": 4.9
+    },
+    {
+      "id": 15,
+      "img": "https://cf.shopee.vn/file/4c9c05be289167e68918129445b2650b",
+      "gia": "180000",
+      "gia_km": "108000",
+      "name": "ÁO KHOÁC KAKI JEAN NAM ĐẸP THỜI TRANG MỚI NHẤT 2019 KKN01",
+      "num_ratting": "78",
+      "sao": 4.9
+    },
+    {
+      "id": 16,
+      "img": "https://cf.shopee.vn/file/bcc56311d7890b77470dae78c6c7e936",
+      "gia": "38000",
+      "gia_km": "27000",
+      "name": "Dây Chuyền Mặt Hình Thánh Giá Phong Cách Harajuku Đường Phố 2282 Cho Nam Và Nữ",
+      "num_ratting": "90",
+      "sao": 4
+    },
+    {
+      "id": 17,
+      "img": "https://cf.shopee.vn/file/620492307efe5962fac13573168d9636",
+      "gia": "35000",
+      "gia_km": "19000",
+      "name": "Khuyên tai nam G-dragon cực chất (1pcs) - Bim's House",
+      "num_ratting": "200",
+      "sao": 4.2
+    },
+    {
+      "id": 17,
+      "img": "https://cf.shopee.vn/file/5b0ee8b80d604dd93e2b77278b770928",
+      "gia": "7390000",
+      "gia_km": "5190000",
+      "name": "Apple AirPods Pro",
+      "num_ratting": "123",
+      "sao": 5
+    },
+    {
+      "id": 17,
+      "img": "https://cf.shopee.vn/file/f9a4003f182632fac31dad9ea0727746",
+      "gia": "13990000",
+      "gia_km": "11990000",
+      "name": "Apple iPhone XR 64GB",
+      "num_ratting": "561",
+      "sao": 4.9
+    },
+    {
+      "id": 17,
+      "img": "https://cf.shopee.vn/file/4e19c33584684be04e886b9652fc2b89",
+      "gia": "8990000",
+      "gia_km": "7890000",
+      "name": "Apple Watch SE 40mm GPS Sport Band",
+      "num_ratting": "100",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/62e2a8205920e31598b7a814eb825f81",
+      "gia": "28990000",
+      "gia_km": "23800000",
+      "name": "Apple MacBook Air (2020) 13.3-inch, Core i3-10th, 1.1Ghz, 8GB, 256GB SSD",
+      "num_ratting": "100",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/73ab38e294d8905274ff7521dc100ce0",
+      "gia": "21990000",
+      "gia_km": "19900000",
+      "name": "Apple iPad Pro (2020) 11-inch Wi-Fi 128GB",
+      "num_ratting": "45",
+      "sao": 4.5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/d66153dd498ef75cc1201b3b16d4d731",
+      "gia": "10000",
+      "gia_km": "6000",
+      "name": "Ốp lưng iphone - Ốp iphone trơn dẻo 8 màu 5/5s/6/6plus/6s/6splus/7/7plus/8/8plus/x/xr/xs/11/12/pro/max/plus/promax",
+      "num_ratting": "45000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/2e0da5fcc25d8e6c9c39b46b2eabfc84",
+      "gia": "94000",
+      "gia_km": "35000",
+      "name": "Đế đỡ hiệu TOPK dính chặt dùng giữ dây cáp hỗ trợ sắp xếp không",
+      "num_ratting": "1000",
+      "sao": 4.9
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/22cf48239df20aa12dbef3f35a4284fb",
+      "gia": "5000",
+      "gia_km": "1000",
+      "name": "Dây cuốn sạc điện thoại bảo vệ cáp tai nghe không đứt gẫy",
+      "num_ratting": "65000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/be7396b3948e7af3224de006610b7bac",
+      "gia": "275000",
+      "gia_km": "239000",
+      "name": "Đồng Hồ Nam FNGEEN Thép Không Gỉ Mạ Vàng Ánh Kim, Chống Nước, Màn Hình Chống Xước",
+      "num_ratting": "100",
+      "sao": 4.7
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/31b1009f1a786c08fce13064d1bae6bb",
+      "gia": "475000",
+      "gia_km": "210000",
+      "name": "Đồng Hồ Nam Cao Cấp Kevin Quartz Dây Da, Mặt Kính Chống Xước, Khung Thép Không Gỉ",
+      "num_ratting": "1000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/c790f6de0034c7f213251cab6cad744f",
+      "gia": "519000",
+      "gia_km": "479000",
+      "name": "Android Tivi Box TX3 mini - 2G Ram và 16G bộ nhớ, Bluetooth, AndroidTV 9 - Phiên bản 2021",
+      "num_ratting": "123",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/8c0899d3cd518598f421418cf949e5d7",
+      "gia": "50000",
+      "gia_km": "38000",
+      "name": "DÉP BÔNG NỈ HÌNH THÚ ĐI TRONG NHÀ ( DÀNH CHO NGƯỜI LỚN )",
+      "num_ratting": "1000",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/ce3af194338f138846e7d07ccf5fcdc1",
+      "gia": "420000",
+      "gia_km": "260000",
+      "name": "Giày cao gót Erosska thời trang mũi nhọn kiểu dáng cơ bản cao 5cm màu bò _ EP011",
+      "num_ratting": "1111",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/a875d8308c151228c2d66edbad01cfdb",
+      "gia": "128000",
+      "gia_km": "100000",
+      "name": "DÉP CROSS Cá Full Tag Cao Cấp Đẹp Nhất [ Giá Sỉ+ Box Hãng + Loại Xịn Nhất+ 12 jb stic ]",
+      "num_ratting": "1209",
+      "sao": 4.5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/70208aa2eb4c18397241f99323bc4ba6",
+      "gia": "169000",
+      "gia_km": "167000",
+      "name": "Áo Blazer 2 lớp 4 cúc mẫu mới Áo vest nữ khoác ngoài",
+      "num_ratting": "900",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/5416022a7a8b51db37618ca0b3e44972",
+      "gia": "89000",
+      "gia_km": "79000",
+      "name": "Quần ống rộng lưng cao vải mềm",
+      "num_ratting": "777",
+      "sao": 4.5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/e24682bddff07f0fe482a164bdf2f725",
+      "gia": "689000",
+      "gia_km": "399000",
+      "name": "vali du lịch BAMOZO 8801 vali kéo nhựa được bảo hành 5 năm",
+      "num_ratting": "999",
+      "sao": 4.6
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/0460dac7150fed31c2689f4867ea31f3",
+      "gia": "183000",
+      "gia_km": "138000",
+      "name": "Găng tay tập gym có quấn cổ tay VEASARERS",
+      "num_ratting": "1111",
+      "sao": 4
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/adf3e471ad03f193e0b85657c2e4c722",
+      "gia": "780000",
+      "gia_km": "499000",
+      "name": "Giày cầu lông Kawasaki K063 chính hãng",
+      "num_ratting": "2000",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/c5d4d71eaeca0e4630265d53ed3717b8",
+      "gia": "33000",
+      "gia_km": "22000",
+      "name": "Găng Chống Nắng Letslim - Hàn Quốc",
+      "num_ratting": "100",
+      "sao": 4.7
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/b4a329596f1d79c2d7edae8d4c2e8d48",
+      "gia": "139000",
+      "gia_km": "79000",
+      "name": "Set Bộ Quần Áo Thể Thao Nam Lưới Mè GK69 Kèm Ảnh Thật",
+      "num_ratting": "10000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/20b074bd652d24b3a34ccb268b566b90",
+      "gia": "1500",
+      "gia_km": "1000",
+      "name": "Dây buộc tóc hoa cúc chi nhiều màu sắc hot trend 2019",
+      "num_ratting": "1000",
+      "sao": 4.6
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/e374e076499ea3762f9d7dcf1c8509c0",
+      "gia": "17000",
+      "gia_km": "10000",
+      "name": "Dây Chuyền Mặt Tròn Họa Tiết Đồng Xu Phong Cách Bohemian",
+      "num_ratting": "1000",
+      "sao": 4.7
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/cce0b7fe83209bb0632b70a75f33fd10",
+      "gia": "250000",
+      "gia_km": "110000",
+      "name": "Mũ Bảo Hiểm 3/4 Đầu Chính Hãng",
+      "num_ratting": "1000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/fd2c6c716886358326a786a49f892976",
+      "gia": "98000",
+      "gia_km": "58000",
+      "name": "Sách - Cẩm Nang Cấu Trúc Tiếng Anh",
+      "num_ratting": "10000",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/946c00c9139826c0fe2f9a5808a64c3d",
+      "gia": "20000",
+      "gia_km": "15000",
+      "name": "Khăn lau xe hơi màu vàng 2 lớp cao cấp siêu sạch siêu thấm hút - K002",
+      "num_ratting": "2000",
+      "sao": 4.9
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/85c7024145c4628f10d66d9356158122",
+      "gia": "2500",
+      "gia_km": "2000",
+      "name": " Thước Hươu Siêu Xinh",
+      "num_ratting": "2000",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/e6b7de4f2337afc0540206f2824cf0c1",
+      "gia": "69000",
+      "gia_km": "72000",
+      "name": "Sách - Sức mạnh của ngôn từ",
+      "num_ratting": "900",
+      "sao": 4.5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/d96de64da91bfe71e5e00da230ec111d",
+      "gia": "250000",
+      "gia_km": "205000",
+      "name": "Dầu Đậu Nành Simply 5L",
+      "num_ratting": "1000",
+      "sao": 4.9
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/ebc480cb3a65a0d0c057a71106e2b507",
+      "gia": "59000",
+      "gia_km": "20000",
+      "name": "200g snack ốc mít ăn vặt ngon",
+      "num_ratting": "100",
+      "sao": 4.5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/d7581908f1ff2c914dc52cb871deb30d",
+      "gia": "580000",
+      "gia_km": "420000",
+      "name": "Sữa Bột Anlene Gold Movepro Hương Vanilla hộp 1,2Kg (trên 40 tuổi)",
+      "num_ratting": "1002",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/68c38bb0bebfb0b2ce1351951df7a7c6",
+      "gia": "200000",
+      "gia_km": "109000",
+      "name": "1kg khô gà lá chanh",
+      "num_ratting": "10101",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/1d09516c892b55e99b48157e8017518e",
+      "gia": "90000",
+      "gia_km": "50000",
+      "name": "Túi Xách Đeo Chéo Hàn Quốc Nữ Đẹp LISA",
+      "num_ratting": "1001",
+      "sao": 5
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/fd5171ee089f4e46513cb2ee1514afc6",
+      "gia": "25000",
+      "gia_km": "16000",
+      "name": "Phụ kiện cài trang trí áo, balo, túi ví mẫu Vô diện ( 34 mẫu )",
+      "num_ratting": "1000",
+      "sao": 4.9
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/3e6be823cd01d901934d5baec6f83af0",
+      "gia": "115000",
+      "gia_km": "69000",
+      "name": "Túi xách đeo chéo nữ khóa tròn thời trang cao cấp TX29",
+      "num_ratting": "8000",
+      "sao": 4.8
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/2f21fcef14e2a8f822607d7a25020b03",
+      "gia": "100000",
+      "gia_km": "69000",
+      "name": "Nước Tẩy Trang Dưỡng Ẩm L'oreal Paris 95ml",
+      "num_ratting": "100",
+      "sao": 4
+    },
+    {"id": 17,
+      "img": "https://cf.shopee.vn/file/a22c3ecb163c29068d7ef9b0bca2ac3e",
+      "gia": "350000",
+      "gia_km": "278000",
+      "name": "Váy vàng trơn cổ đổ xẻ bên",
+      "num_ratting": "1000",
+      "sao": 5
+    }
+  ],
+  "ProductCategoryHome" : [ {
+    "img" : 2131165463,
+    "name" : "Thời Trang Nam"
+  }, {
+    "img" : 2131165465,
+    "name" : "Thời Trang Nữ"
+  }, {
+    "img" : 2131165474,
+    "name" : "Điện Thoại & Phụ Kiện"
+  }, {
+    "img" : 2131165466,
+    "name" : "Mẹ & Bé"
+  }, {
+    "img" : 2131165476,
+    "name" : "Thiết Bị Điện Tử"
+  }, {
+    "img" : 2131165467,
+    "name" : "Nhà Cửa & Đời Sống"
+  }, {
+    "img" : 2131165477,
+    "name" : "Máy Tính & Laptop"
+  }, {
+    "img" : 2131165468,
+    "name" : "Sức Khỏe & Sắc Đẹp"
+  }, {
+    "img" : 2131165478,
+    "name" : "Máy Ảnh & Máy Quay Phim"
+  }, {
+    "img" : 2131165469,
+    "name" : "Giày Dép Nữ"
+  }, {
+    "img" : 2131165479,
+    "name" : "Đồng Hồ"
+  }, {
+    "img" : 2131165470,
+    "name" : "Túi Ví"
+  }, {
+    "img" : 2131165480,
+    "name" : "Giày Dép Nam"
+  }, {
+    "img" : 2131165471,
+    "name" : "Phụ Kiện Thời Trang"
+  }, {
+    "img" : 2131165481,
+    "name" : "Thiết Bị Điện Gia Dụng"
+  }, {
+    "img" : 2131165472,
+    "name" : "Bách Hóa Online"
+  }, {
+    "img" : 2131165482,
+    "name" : "Thể Thao & Du Lịch"
+  }, {
+    "img" : 2131165473,
+    "name" : "Voucher & Dịch Vụ"
+  }, {
+    "img" : 2131165464,
+    "name" : "Ô tô - Xe Máy - Xe Đạp"
+  }, {
+    "img" : 2131165475,
+    "name" : "Nhà Sách Online"
+  } ],
+  "TopSaleHome" : [ {
+    "gia" : "đ 19.000",
+    "img" : 2131165503
+  }, {
+    "gia" : "đ 4.000",
+    "img" : 2131165504
+  }, {
+    "gia" : "đ 185.000",
+    "img" : 2131165505
+  }, {
+    "gia" : "đ 99.000",
+    "img" : 2131165506
+  }, {
+    "gia" : "đ 11.000",
+    "img" : 2131165507
+  }, {
+    "gia" : "đ 125.000",
+    "img" : 2131165508
+  } ],
+ "User" : {
+    "0346996951" : {
+      "Name" : "Dung",
+      "Password" : "1234"
+    },
+    "0348482493" : {
+      "Name" : "Thanh",
+      "Password" : "1234"
+    },
+    "0763639952" : {
+      "Name" : "Tuan",
+      "Password" : "1234"
+    }
+  }
+}

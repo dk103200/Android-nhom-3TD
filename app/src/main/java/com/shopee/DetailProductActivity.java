@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,33 +27,54 @@ import com.shopee.home.FlashSale;
 import com.shopee.home.TopSale;
 import com.squareup.picasso.Picasso;
 
+import java.text.Format;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class DetailProductActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
-    private ArrayList<Integer> listPhoto;
     private TextView tv_name,tv_gia,tv_km,tv_rating;
     private RatingBar ratingBar;
     ImageView back,cart,chat,add_cart;
     private DatabaseReference mData;
+
+
+    ViewPager2 viewPager2;
+    private CircleIndicator circleIndicator;
+    PhotoAdapter adapter;
+    ArrayList<String> data;
+
+    String url="https://cf.shopee.vn/file/6d3c20c6e9fb283a6af08e9b8a3ed0e0_tn",
+
+            url6="https://i.ytimg.com/vi/lUrmyU1cnxU/maxresdefault.jpg";
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
 
+
+        data=new ArrayList<>();
+
+        setData();
+
+        data.add( url);
+        viewPager2=findViewById(R.id.viewpager);
+        adapter=new PhotoAdapter(data);
+        viewPager2.setAdapter(adapter);
         init ();
 
         setbtn_Cart();
         setbtn_Back();
         setbtn_Chat();
-        setData();
 
-        viewPager = findViewById(R.id.viewpager);
-        listPhoto = getListPhoto ();
-        BannerAdapter bnAdapter = new BannerAdapter(this, listPhoto);
-        viewPager.setAdapter(bnAdapter);
+
+
 
     }
 
@@ -64,6 +86,13 @@ public class DetailProductActivity extends AppCompatActivity {
         tv_rating = findViewById(R.id.rating_product);
         ratingBar = findViewById(R.id.ratingBar);
     }
+
+//    @Override
+//    protected void onResume() {
+//        setData();
+//        super.onResume();
+//    }
+
     public void setData(){
         Intent intent = getIntent();
         int id = intent.getIntExtra("id",0);
@@ -72,21 +101,13 @@ public class DetailProductActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Product values =  snapshot.getValue (Product.class);
-
-
-//                tv_tmp.append(values+ "\n");
                 if (values.getId() == id){
-                    ImageView img = new ImageView(getApplicationContext());
-                    Picasso.with(getApplicationContext()).load(values.getImg()).into(img);
-                    img.setScaleType(ImageView.ScaleType.FIT_XY);
-                    listPhoto.add(img);
-                    listPhoto.add(R.drawable.shop1);
-                    listPhoto.add(R.drawable.shop2);
-                    listPhoto.add(R.drawable.shop3);
+                    data.add(url);
                     tv_name.setText(values.getName());
-                    tv_gia.setText(values.getGia());
-                    tv_km.setText(values.getGia_km());
+                    NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("vi","VN"));
+                    tv_km.setText(fmt.format(Integer.parseInt(values.getGia_km())));
                     tv_gia.setPaintFlags(tv_km.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG );
+                    tv_gia.setText(fmt.format(Integer.parseInt(values.getGia())));
                     tv_rating.setText(String.valueOf(values.getSao()) );
                     ratingBar.setRating(values.getSao());
 
@@ -118,13 +139,6 @@ public class DetailProductActivity extends AppCompatActivity {
 
     }
 
-    private ArrayList<Integer> getListPhoto() {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(R.drawable.shop1);
-        list.add(R.drawable.shop2);
-        list.add(R.drawable.shop3);
-        return list;
-    }
     public void setbtn_Chat(){
         chat = findViewById(R.id.chat);
         chat.setOnClickListener(new View.OnClickListener() {
