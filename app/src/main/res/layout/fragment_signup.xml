@@ -54,7 +54,7 @@
             android:maxLines="1"
             android:layout_width="match_parent"
             android:textSize="16sp"
-            android:padding="10dp"
+            android:padding="5dp"
             android:drawablePadding="20dp"
             android:layout_height="wrap_content"
 
@@ -67,20 +67,21 @@
             android:layout_height="0.5dp"
             android:layout_margin="5dp"
             android:background="#9F9F9F"/>
+
         <EditText
             android:id="@+id/edt_user"
-            android:inputType="text"
-            android:maxLines="1"
             android:layout_width="match_parent"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:drawablePadding="20dp"
             android:layout_height="wrap_content"
-            android:drawableTint="@color/icon_color"
-            app:tint="@color/icon_color"
             android:background="@null"
             android:drawableLeft="@drawable/ic_telephone"
-            android:hint="Số điện thoại"/>
+            android:drawablePadding="20dp"
+            android:drawableTint="@color/icon_color"
+            android:hint="Số điện thoại"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:textSize="16sp"
+            app:tint="@color/icon_color" />
 
         <View
             android:layout_width="match_parent"
@@ -103,7 +104,7 @@
                 android:background="@null"
                 android:drawableLeft="@drawable/ic_pass"
                 android:drawableTint="@color/icon_color"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:drawablePadding="20dp"
                 android:hint="Mật khẩu"/>
             <ImageView
@@ -136,7 +137,7 @@
                 android:background="@null"
                 android:drawableLeft="@drawable/ic_pass"
                 android:drawableTint="@color/icon_color"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:drawablePadding="20dp"
                 android:hint="Xác nhận mật khẩu"/>
             <ImageView
@@ -162,22 +163,18 @@
             android:layout_height="wrap_content"
             android:padding="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Hoặc"
-            android:layout_gravity="center_horizontal"
-            android:textSize="18sp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="#0E94FF"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_margin="1dp"
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:src="@drawable/logo_google"/>
             <TextView
                 android:id="@+id/tv_login_gg"

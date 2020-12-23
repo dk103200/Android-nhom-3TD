@@ -81,6 +81,8 @@ public class dangnhap extends AppCompatActivity {
                                 Toast.makeText(dangnhap.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
                                 Intent homeIntent = new Intent(dangnhap.this, MainActivity.class);
                                 homeIntent.putExtra("user_name", user.getName());
+                                homeIntent.putExtra("user_id", user.getPhone());
+
                                 startActivity(homeIntent);
                                finish();
 

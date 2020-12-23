@@ -45,8 +45,8 @@ public class dangky_activity extends AppCompatActivity {
         });
 
         //Firebase
-        final FirebaseDatabase database= FirebaseDatabase.getInstance();
-        final DatabaseReference table_user=database.getReference("User");
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = database.getReference("User");
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,21 +56,21 @@ public class dangky_activity extends AppCompatActivity {
                 mDialog.show();
                 if (edtPassword.getText().toString().equals(edtConfirm.getText().toString())) {
                     table_user.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //Check if
-                            if (snapshot.child(edtPhone.getText().toString()).exists()) {
-                                //Get User information
-                                mDialog.dismiss();
-                                Toast.makeText(dangky_activity.this, "Số Điện Thoại Đã Tồn Tại !", Toast.LENGTH_SHORT).show();
-                            } else {
-                                mDialog.dismiss();
-                                User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
-                                table_user.child(edtPhone.getText().toString()).setValue(user);
-                                Toast.makeText(dangky_activity.this, "Đăng Kí Thành Công !", Toast.LENGTH_SHORT).show();
-                                finish();
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //Check if
+                                if (snapshot.child(edtPhone.getText().toString()).exists()) {
+                                    //Get User information
+                                    mDialog.dismiss();
+                                    Toast.makeText(dangky_activity.this, "Số Điện Thoại Đã Tồn Tại !", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    mDialog.dismiss();
+                                    User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
+                                    table_user.child(edtPhone.getText().toString()).setValue(user);
+                                    Toast.makeText(dangky_activity.this, "Đăng Kí Thành Công !", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
                             }
-                        }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

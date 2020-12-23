@@ -117,29 +117,30 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/rectangle_boder"
-                        android:padding="5dp"
+                        android:padding="9dp"
                         android:src="@drawable/ic_minus"
                         app:tint="#89000000" />
 
                     <EditText
                         android:id="@+id/edt_solg"
                         android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
                         android:background="@drawable/rectangle_boder"
                         android:text="1" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/rectangle_boder"
-                        android:padding="5dp"
+                        android:padding="9dp"
                         android:src="@drawable/ic_add"
                         app:tint="#89000000" />
                 </LinearLayout>

@@ -1,18 +1,31 @@
 package com.shopee.cart;
 
 public class Cart {
-    private int img;
+    private int id;
+    private String img;
     private String name;
     private String product;
-    private String gia;
+    private int gia;
     private int solg;
 
-    public Cart(int img, String name, String product, String gia, int solg) {
+    public Cart() {
+    }
+
+    public Cart(int id, String img, String name, String product, int gia, int solg) {
+        this.id = id;
         this.img = img;
         this.name = name;
         this.product = product;
         this.gia = gia;
         this.solg = solg;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getSolg() {
@@ -23,13 +36,6 @@ public class Cart {
         this.solg = solg;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
 
     public String getName() {
         return name;
@@ -47,11 +53,19 @@ public class Cart {
         this.product = product;
     }
 
-    public String getGia() {
+    public int getGia() {
         return gia;
     }
 
-    public void setGia(String gia) {
+    public void setGia(int gia) {
         this.gia = gia;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

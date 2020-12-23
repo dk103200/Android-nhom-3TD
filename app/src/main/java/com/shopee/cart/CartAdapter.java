@@ -17,8 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shopee.R;
 import com.shopee.home.InternationalActivity;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
@@ -43,11 +47,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHoder> {
     }
 
     @Override
+
     public void onBindViewHolder(@NonNull viewHoder holder, int position) {
         holder.tvName.setText(carts.get(position).getName());
         holder.tvProduct.setText(carts.get(position).getProduct());
-        holder.tvGia.setText(carts.get(position).getGia());
-        holder.img.setImageResource(carts.get(position).getImg());
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        holder.tvGia.setText(fmt.format(carts.get(position).getGia()));
+        Picasso.get().load(carts.get(position).getImg()).into(holder.img, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+//                Toast.makeText(getContext(),"Không lấy đc img từ link",Toast.LENGTH_LONG).show();
+            }
+        });
+//        holder.img.setImageResource(carts.get(position).getImg());
         holder.solg.setText(String.valueOf(carts.get(position).getSolg()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

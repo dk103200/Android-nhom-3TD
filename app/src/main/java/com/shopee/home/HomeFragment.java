@@ -1,6 +1,8 @@
 package com.shopee.home;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.icu.text.NumberFormat;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,8 +35,11 @@ import com.google.zxing.integration.android.IntentResult;
 import com.shopee.MainActivity;
 import com.shopee.Product;
 import com.shopee.R;
+import com.shopee.firebasegrid.CategoryViewHolder;
+import com.shopee.firebasegrid.Categoryitem;
 import com.shopee.home.sanpham.AdapterSanPham;
 import com.shopee.home.sanpham.sanpham;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -43,6 +50,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -61,6 +69,10 @@ public class HomeFragment extends Fragment {
     private ImageView imgBarcode;
     private DatabaseReference mData;
 
+    RecyclerView recyclerView;
+    FirebaseRecyclerOptions<Categoryitem> options;
+    FirebaseRecyclerAdapter<Categoryitem,CategoryViewHolder> adapter;
+
     ArrayList<Category> listCategories;
     ArrayList<TopSale> listTopSales;
     ArrayList<FlashSale> listFlashSales;
@@ -76,13 +88,13 @@ public class HomeFragment extends Fragment {
         mCvCountdown.start(2 * 3600 * 1000);
 
         final IntentIntegrator integrator = new IntentIntegrator(mainActivity);
-        imgBarcode = view.findViewById(R.id.barcode);
-        imgBarcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                integrator.initiateScan();
-            }
-        });
+//        imgBarcode = view.findViewById(R.id.barcode);
+//        imgBarcode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                integrator.initiateScan();
+//            }
+//        });
 
         getListPhoto();
 
@@ -96,66 +108,75 @@ public class HomeFragment extends Fragment {
 
         initDanhMuc();
 
-        initListProduct();
+        gridProduct(view);
         return view;
     }
 
-    private void initListProduct() {
-            RecyclerView recyclerView = view.findViewById(R.id.rcv_product);
-            recyclerView.setHasFixedSize(true);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,RecyclerView.VERTICAL,false);
-            recyclerView.setLayoutManager(gridLayoutManager);
-            ArrayList<sanpham> arrayList =  new ArrayList<>();
+    private void gridProduct(View view){
 
-            arrayList.add(new sanpham("Áo sơ mi nữ tay phồng theo phong cách retro",R.drawable.sp_aoden,233000 ,118000,5,897));
-            arrayList.add(new sanpham("Giày vớ tập đi chống trượt hình động vật dễ thương cho bé",R.drawable.sp_depchobe,68000 ,34000,4,367));
-            arrayList.add(new sanpham("Áo Hoodie Tay Dài In Hình Khủng Long Cho Nam",R.drawable.sp_hoodie,201000 ,101000,4,176));
-            arrayList.add(new sanpham("Áo tay dài dáng rộng cổ tròn thời trang phong cách cho nam",R.drawable.sp_aotaydai,168000 ,100000,5,67));
-            arrayList.add(new sanpham("Áo Thun Lửng Tay Ngắn Thêu Hình Bướm Quyến Rũ Cho Nữ",R.drawable.sp_aothun,100000 ,50000,5,239));
+        recyclerView = (RecyclerView) view.findViewById(R.id.rcv_gridproduct);
+        recyclerView.setHasFixedSize(true);
+        mData = FirebaseDatabase.getInstance().getReference().child("Product");
 
-            AdapterSanPham adapter = new AdapterSanPham(arrayList, getContext(),R.layout.row_sanpham);
-            recyclerView.setAdapter(adapter);
-//
-//        mData = FirebaseDatabase.getInstance().getReference().child("Product");
-//        mData.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-//                Product values =  snapshot.getValue (Product.class);
-//
-////                tv_tmp.append(values+ "\n");
-//                listProduct.add(values);
-//                categoryAdapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//
-//        });
-//
-//
-//
-//         =new itemAdapter(this , R.layout.item_sanpham,listProduct);
-//        gridview.setAdapter(itemAdapter);
+        options = new FirebaseRecyclerOptions.Builder<Categoryitem>()
+                .setQuery(mData, Categoryitem.class).build();
+        adapter = new FirebaseRecyclerAdapter<Categoryitem, CategoryViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull CategoryViewHolder holder, int i, @NonNull Categoryitem model) {
+
+                Picasso.get().load(model.getImg()).into(holder.img, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Toast.makeText(getContext(),"Không lấy đc img từ link",Toast.LENGTH_LONG).show();
+                    }
+                });
+                holder.name.setText(model.getName());
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi","VN"));
+
+                holder.tv_giaban.setText( formatter.format( Integer.parseInt( model.getGia() ) ));
+                holder.tv_giakm.setText(formatter.format( Integer.parseInt( model.getGiaKM() ) ));
+            }
+
+            @NonNull
+            @Override
+            public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_product,parent,false);
+
+                return new CategoryViewHolder(view);
+            }
+        };
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(adapter != null)
+            adapter.startListening();
     }
 
+    @Override
+    public void onStop() {
+        if (adapter != null)
+            adapter.stopListening();
+        super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(adapter != null)
+            adapter.startListening();
+    }
 
     private void getListPhoto() {
         listPhoto = new ArrayList<>();
@@ -354,10 +375,9 @@ public class HomeFragment extends Fragment {
                 FlashSale values =  snapshot.getValue (FlashSale.class);
 
 //                tv_tmp.append(values+ "\n");
-                if (values.getSell().toString().equals("ĐÃ BÁN 2")){
+
                     listFlashSales.add(values);
                     flashSaleAdapter.notifyDataSetChanged();
-                }
 
 
             }
