@@ -14,16 +14,28 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shopee.cart.CartActivity;
 import com.shopee.chat.ChatActivity;
+import com.shopee.me.MeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navView;
     private CustomViewPager viewPager;
     ImageView chat,cart;
+    String user_name,user_id;
+    MeFragment meFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        Intent intent = getIntent();
+//        user_name = intent.getStringExtra("user_name");
+//        user_id = intent.getStringExtra("user_id");
+//        Bundle args = new Bundle();
+//
+//        args.putString("user_name",user_name);
+//
+//        meFragment.putArgument(args);
 
         setbtn_Cart();
         setbtn_Chat();
@@ -32,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
 
         setViewPager();
+
 
 
 

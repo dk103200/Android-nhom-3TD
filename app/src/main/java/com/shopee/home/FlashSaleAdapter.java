@@ -13,8 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shopee.DetailProductActivity;
 import com.shopee.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.viewHoder> {
 
@@ -39,15 +43,26 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.view
 
     @Override
     public void onBindViewHolder(@NonNull viewHoder holder, int position) {
-        holder.tvName.setText(flashSales.get(position).getGia());
-        holder.img.setImageResource(flashSales.get(position).getImg());
-        holder.sell.setText(flashSales.get(position).getSell());
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        holder.tvName.setText(fmt.format(Integer.parseInt(flashSales.get(position).getGia())));
+        Picasso.get().load(flashSales.get(position).getImg()).into(holder.img, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+//                Toast.makeText(getContext(),"Không lấy đc img từ link",Toast.LENGTH_LONG).show();
+            }
+        });
+        holder.sell.setText("ĐÃ BÁN "+flashSales.get(position).getSell());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(context, DetailProductActivity.class);
-                myIntent.putExtra("id",position);
+                myIntent.putExtra("id",flashSales.get(position).getId());
 
                 context.startActivity(myIntent);
 

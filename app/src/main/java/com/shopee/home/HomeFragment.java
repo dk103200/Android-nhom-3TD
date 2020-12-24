@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -35,22 +34,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.shopee.MainActivity;
 import com.shopee.Product;
 import com.shopee.R;
-import com.shopee.firebasegrid.CategoryViewHolder;
-import com.shopee.firebasegrid.Categoryitem;
-import com.shopee.home.sanpham.AdapterSanPham;
-import com.shopee.home.sanpham.sanpham;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -68,10 +52,6 @@ public class HomeFragment extends Fragment {
     private Timer timer;
     private ImageView imgBarcode;
     private DatabaseReference mData;
-
-    RecyclerView recyclerView;
-    FirebaseRecyclerOptions<Categoryitem> options;
-    FirebaseRecyclerAdapter<Categoryitem,CategoryViewHolder> adapter;
 
     ArrayList<Category> listCategories;
     ArrayList<TopSale> listTopSales;
@@ -108,74 +88,10 @@ public class HomeFragment extends Fragment {
 
         initDanhMuc();
 
-        gridProduct(view);
+        initProduct();
+
+//        gridProduct(view);
         return view;
-    }
-
-    private void gridProduct(View view){
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.rcv_gridproduct);
-        recyclerView.setHasFixedSize(true);
-        mData = FirebaseDatabase.getInstance().getReference().child("Product");
-
-        options = new FirebaseRecyclerOptions.Builder<Categoryitem>()
-                .setQuery(mData, Categoryitem.class).build();
-        adapter = new FirebaseRecyclerAdapter<Categoryitem, CategoryViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull CategoryViewHolder holder, int i, @NonNull Categoryitem model) {
-
-                Picasso.get().load(model.getImg()).into(holder.img, new Callback() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-                        Toast.makeText(getContext(),"Không lấy đc img từ link",Toast.LENGTH_LONG).show();
-                    }
-                });
-                holder.name.setText(model.getName());
-                NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi","VN"));
-
-                holder.tv_giaban.setText( formatter.format( Integer.parseInt( model.getGia() ) ));
-                holder.tv_giakm.setText(formatter.format( Integer.parseInt( model.getGiaKM() ) ));
-            }
-
-            @NonNull
-            @Override
-            public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_product,parent,false);
-
-                return new CategoryViewHolder(view);
-            }
-        };
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        adapter.startListening();
-        recyclerView.setAdapter(adapter);
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        if(adapter != null)
-            adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        if (adapter != null)
-            adapter.stopListening();
-        super.onStop();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if(adapter != null)
-            adapter.startListening();
     }
 
     private void getListPhoto() {
@@ -237,62 +153,62 @@ public class HomeFragment extends Fragment {
 
         listCategories = new ArrayList<>();
         CategoryAdapter categoryAdapter = new CategoryAdapter(listCategories, mainActivity, R.layout.item_categories);
-
-        mData = FirebaseDatabase.getInstance().getReference().child("CategoryHome");
-        mData.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-                Category values =  snapshot.getValue (Category.class);
-
-//                tv_tmp.append(values+ "\n");
-                listCategories.add(values);
-                categoryAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
-//        listCategories.add(new Category(R.drawable.ic_now, "NowFood - Bữa Ngon 0đ"));
-//        listCategories.add(new Category(R.drawable.ic_deals, "Deal Gần Bạn - Chỉ từ 1K"));
-//        listCategories.add(new Category(R.drawable.world, "Hàng Quốc Tế - Tri Ân"));
-//        listCategories.add(new Category(R.drawable.xtra, "Freeship Xtra"));
-//        listCategories.add(new Category(R.drawable.beauty, "Beauty Club - Mê Làm Đẹp"));
-//        listCategories.add(new Category(R.drawable.xu_xtra, "Hoàn Xu Đơn Bất Kỳ"));
-//        listCategories.add(new Category(R.drawable.diamond, "Shopee Premium"));
-//        listCategories.add(new Category(R.drawable.brand, "Brand Discount"));
-//        listCategories.add(new Category(R.drawable.mum, "Shopee Mum's Club"));
-//        listCategories.add(new Category(R.drawable.discount50, "Săn Siêu Sale"));
-//        listCategories.add(new Category(R.drawable.device, "Tech Zone - Siêu Thị Điện Thoại"));
-//        listCategories.add(new Category(R.drawable.book, "Book Club - Sách Sale Sốc"));
-//        listCategories.add(new Category(R.drawable.ic_smartphone, "Nạp Thẻ & Dịch Vụ"));
-//        listCategories.add(new Category(R.drawable.ic_mall, "Shopee Mall"));
-//        listCategories.add(new Category(R.drawable.ic_one, "Deal Sốc Từ 1K"));
-//        listCategories.add(new Category(R.drawable.ic__d, "Vận May 1Đ"));
-//        listCategories.add(new Category(R.drawable.ic_delivery, "Miễn Phí Vẫn Chuyển"));
-//        listCategories.add(new Category(R.drawable.ic_everyday, "Săn Xu Mỗi Ngày"));
-//        listCategories.add(new Category(R.drawable.ic_mart, "Shopee Mart"));
-//        listCategories.add(new Category(R.drawable.ic_delivery, "Mã Giảm Giá"));
-//        listCategories.add(new Category(R.drawable.ic_partner, "Ưu Đãi Đối Tác"));
-//        listCategories.add(new Category(R.drawable.ic_star, "KOL Club"));
+//
+//        mData = FirebaseDatabase.getInstance().getReference().child("CategoryHome");
+//        mData.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//                Category values =  snapshot.getValue (Category.class);
+//
+////                tv_tmp.append(values+ "\n");
+//                listCategories.add(values);
+//                categoryAdapter.notifyDataSetChanged();
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//
+//        });
+        listCategories.add(new Category(R.drawable.ic_now, "NowFood - Bữa Ngon 0đ"));
+        listCategories.add(new Category(R.drawable.ic_deals, "Deal Gần Bạn - Chỉ từ 1K"));
+        listCategories.add(new Category(R.drawable.world, "Hàng Quốc Tế - Tri Ân"));
+        listCategories.add(new Category(R.drawable.xtra, "Freeship Xtra"));
+        listCategories.add(new Category(R.drawable.beauty, "Beauty Club - Mê Làm Đẹp"));
+        listCategories.add(new Category(R.drawable.xu_xtra, "Hoàn Xu Đơn Bất Kỳ"));
+        listCategories.add(new Category(R.drawable.diamond, "Shopee Premium"));
+        listCategories.add(new Category(R.drawable.brand, "Brand Discount"));
+        listCategories.add(new Category(R.drawable.mum, "Shopee Mum's Club"));
+        listCategories.add(new Category(R.drawable.discount50, "Săn Siêu Sale"));
+        listCategories.add(new Category(R.drawable.device, "Tech Zone - Siêu Thị Điện Thoại"));
+        listCategories.add(new Category(R.drawable.book, "Book Club - Sách Sale Sốc"));
+        listCategories.add(new Category(R.drawable.ic_smartphone, "Nạp Thẻ & Dịch Vụ"));
+        listCategories.add(new Category(R.drawable.ic_mall, "Shopee Mall"));
+        listCategories.add(new Category(R.drawable.ic_one, "Deal Sốc Từ 1K"));
+        listCategories.add(new Category(R.drawable.ic__d, "Vận May 1Đ"));
+        listCategories.add(new Category(R.drawable.ic_delivery, "Miễn Phí Vẫn Chuyển"));
+        listCategories.add(new Category(R.drawable.ic_everyday, "Săn Xu Mỗi Ngày"));
+        listCategories.add(new Category(R.drawable.ic_mart, "Shopee Mart"));
+        listCategories.add(new Category(R.drawable.ic_delivery, "Mã Giảm Giá"));
+        listCategories.add(new Category(R.drawable.ic_partner, "Ưu Đãi Đối Tác"));
+        listCategories.add(new Category(R.drawable.ic_star, "KOL Club"));
 
 //        CategoryAdapter categoryAdapter = new CategoryAdapter(listCategories, mainActivity, R.layout.item_categories);
         rcv_Category.setAdapter(categoryAdapter);
@@ -313,15 +229,18 @@ public class HomeFragment extends Fragment {
 //        listTopSales.add(new TopSale(R.drawable.product5, "đ 11.000"));
 //        listTopSales.add(new TopSale(R.drawable.product6, "đ 125.000"));
         TopSaleAdapter topSaleAdapter = new TopSaleAdapter(listTopSales, mainActivity, R.layout.item_topsale);
-        mData = FirebaseDatabase.getInstance().getReference().child("TopSaleHome");
+        mData = FirebaseDatabase.getInstance().getReference().child("Product");
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-                TopSale values =  snapshot.getValue (TopSale.class);
-
+                Product values =  snapshot.getValue (Product.class);
+                if(values.getId() < 6){
+                    TopSale tmp = new TopSale(values.getGia(),values.getImg(),values.getId());
 //                tv_tmp.append(values+ "\n");
-                listTopSales.add(values);
-                topSaleAdapter.notifyDataSetChanged();
+                    listTopSales.add(tmp);
+                    topSaleAdapter.notifyDataSetChanged();
+                }
+
 
             }
 
@@ -368,18 +287,17 @@ public class HomeFragment extends Fragment {
 //        listFlashSales.add(new FlashSale(R.drawable.flashsale455, "đ 455.000", 3));
 
         FlashSaleAdapter flashSaleAdapter = new FlashSaleAdapter(listFlashSales, mainActivity, R.layout.item_flashsale);
-        mData = FirebaseDatabase.getInstance().getReference().child("FlashSaleHome");
+        mData = FirebaseDatabase.getInstance().getReference().child("Product");
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-                FlashSale values =  snapshot.getValue (FlashSale.class);
 
-//                tv_tmp.append(values+ "\n");
-
-                    listFlashSales.add(values);
+                Product values =  snapshot.getValue (Product.class);
+                if(values.getId() >= 6 && values.getId() < 12 ){
+                    FlashSale tmp = new FlashSale(values.getGia(),String.valueOf(values.getId()),values.getImg(),values.getId());
+                    listFlashSales.add(tmp);
                     flashSaleAdapter.notifyDataSetChanged();
-
-
+                }
             }
 
             @Override
@@ -413,39 +331,58 @@ public class HomeFragment extends Fragment {
         rcv_Category2.setLayoutManager(gird);
 
         listDanhMuc = new ArrayList<>();
-//
-//        listDanhMuc.add(new Category(R.drawable.muc1, "Thời Trang Nam"));
-//        listDanhMuc.add(new Category(R.drawable.muc11, "Thời Trang Nữ"));
-//        listDanhMuc.add(new Category(R.drawable.muc2, "Điện Thoại & Phụ Kiện"));
-//        listDanhMuc.add(new Category(R.drawable.muc12, "Mẹ & Bé"));
-//        listDanhMuc.add(new Category(R.drawable.muc3, "Thiết Bị Điện Tử"));
-//        listDanhMuc.add(new Category(R.drawable.muc13, "Nhà Cửa & Đời Sống"));
-//        listDanhMuc.add(new Category(R.drawable.muc4, "Máy Tính & Laptop"));
-//        listDanhMuc.add(new Category(R.drawable.muc14, "Sức Khỏe & Sắc Đẹp"));
-//        listDanhMuc.add(new Category(R.drawable.muc5, "Máy Ảnh & Máy Quay Phim"));
-//        listDanhMuc.add(new Category(R.drawable.muc15, "Giày Dép Nữ"));
-//        listDanhMuc.add(new Category(R.drawable.muc6, "Đồng Hồ"));
-//        listDanhMuc.add(new Category(R.drawable.muc16, "Túi Ví"));
-//        listDanhMuc.add(new Category(R.drawable.muc7, "Giày Dép Nam"));
-//        listDanhMuc.add(new Category(R.drawable.muc17, "Phụ Kiện Thời Trang"));
-//        listDanhMuc.add(new Category(R.drawable.muc8, "Thiết Bị Điện Gia Dụng"));
-//        listDanhMuc.add(new Category(R.drawable.muc18, "Bách Hóa Online"));
-//        listDanhMuc.add(new Category(R.drawable.muc9, "Thể Thao & Du Lịch"));
-//        listDanhMuc.add(new Category(R.drawable.muc19, "Voucher & Dịch Vụ"));
-//        listDanhMuc.add(new Category(R.drawable.muc10, "Ô tô - Xe Máy - Xe Đạp"));
-//        listDanhMuc.add(new Category(R.drawable.muc20, "Nhà Sách Online"));
+
+        listDanhMuc.add(new Category(R.drawable.muc1, "Thời Trang Nam"));
+        listDanhMuc.add(new Category(R.drawable.muc11, "Thời Trang Nữ"));
+        listDanhMuc.add(new Category(R.drawable.muc2, "Điện Thoại & Phụ Kiện"));
+        listDanhMuc.add(new Category(R.drawable.muc12, "Mẹ & Bé"));
+        listDanhMuc.add(new Category(R.drawable.muc3, "Thiết Bị Điện Tử"));
+        listDanhMuc.add(new Category(R.drawable.muc13, "Nhà Cửa & Đời Sống"));
+        listDanhMuc.add(new Category(R.drawable.muc4, "Máy Tính & Laptop"));
+        listDanhMuc.add(new Category(R.drawable.muc14, "Sức Khỏe & Sắc Đẹp"));
+        listDanhMuc.add(new Category(R.drawable.muc5, "Máy Ảnh & Máy Quay Phim"));
+        listDanhMuc.add(new Category(R.drawable.muc15, "Giày Dép Nữ"));
+        listDanhMuc.add(new Category(R.drawable.muc6, "Đồng Hồ"));
+        listDanhMuc.add(new Category(R.drawable.muc16, "Túi Ví"));
+        listDanhMuc.add(new Category(R.drawable.muc7, "Giày Dép Nam"));
+        listDanhMuc.add(new Category(R.drawable.muc17, "Phụ Kiện Thời Trang"));
+        listDanhMuc.add(new Category(R.drawable.muc8, "Thiết Bị Điện Gia Dụng"));
+        listDanhMuc.add(new Category(R.drawable.muc18, "Bách Hóa Online"));
+        listDanhMuc.add(new Category(R.drawable.muc9, "Thể Thao & Du Lịch"));
+        listDanhMuc.add(new Category(R.drawable.muc19, "Voucher & Dịch Vụ"));
+        listDanhMuc.add(new Category(R.drawable.muc10, "Ô tô - Xe Máy - Xe Đạp"));
+        listDanhMuc.add(new Category(R.drawable.muc20, "Nhà Sách Online"));
 
         CategoryAdapter mucAdapter = new CategoryAdapter(listDanhMuc, mainActivity, R.layout.item_muc);
-        mData = FirebaseDatabase.getInstance().getReference().child("ProductCategoryHome");
+
+        rcv_Category2.setAdapter(mucAdapter);
+    }
+    private void initProduct() {
+        RecyclerView rcv_flashsale = view.findViewById(R.id.rcv_product);
+        rcv_flashsale.setHasFixedSize(true);
+        GridLayoutManager gird = new GridLayoutManager(mainActivity, 2, GridLayoutManager.VERTICAL, false);
+        rcv_flashsale.setLayoutManager(gird);
+
+        listProduct = new ArrayList<>();
+
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale1, "đ 4.000", 2));
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale2, "đ 185.000", 1));
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale75, "đ 75.000", 3));
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale179, "đ 179.000", 2));
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale252, "đ 252.000", 4));
+//        listFlashSales.add(new FlashSale(R.drawable.flashsale455, "đ 455.000", 3));
+
+        ProductAdapter productAdapter = new ProductAdapter(listProduct, mainActivity, R.layout.row_product);
+        mData = FirebaseDatabase.getInstance().getReference().child("Product");
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @com.google.firebase.database.annotations.Nullable String previousChildName) {
-                Category values =  snapshot.getValue (Category.class);
 
-//                tv_tmp.append(values+ "\n");
-                listDanhMuc.add(values);
-                mucAdapter.notifyDataSetChanged();
-
+                Product values =  snapshot.getValue (Product.class);
+                if(values.getId() >=  12 ){
+                    listProduct.add(values);
+                    productAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -469,8 +406,7 @@ public class HomeFragment extends Fragment {
             }
 
         });
-        rcv_Category2.setAdapter(mucAdapter);
+        rcv_flashsale.setAdapter(productAdapter);
     }
-
 
 }

@@ -43,7 +43,7 @@ public class MeFragment extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_me, container, false);
-//        viewSign = inflater.inflate(R.layout.fragment_login, container, false);
+
         init_ListCaNhan();
         openLogin();
         openSignup();
@@ -64,6 +64,7 @@ public class MeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         ArrayList<List_Menu> arrayList = new ArrayList<>();
+        AdapterOfListMenu adapter = new AdapterOfListMenu(arrayList, mainActivity, R.layout.row_canhan);
 
         arrayList.add(new List_Menu(R.drawable.donmua, "Đơn mua"));
         arrayList.add(new List_Menu(R.drawable.smartphone, "Đơn nạp thẻ và Dịch vụ"));
@@ -77,7 +78,7 @@ public class MeFragment extends Fragment {
         arrayList.add(new List_Menu(R.drawable.trogiup, "Trung tâm trợ giúp"));
         arrayList.add(new List_Menu(R.drawable.trochuyen, "Trò Chuyện Với Shopee"));
 
-        AdapterOfListMenu adapter = new AdapterOfListMenu(arrayList, mainActivity, R.layout.row_canhan);
+
         recyclerView.setAdapter(adapter);
 
     }

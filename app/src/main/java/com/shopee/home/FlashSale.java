@@ -1,16 +1,9 @@
 package com.shopee.home;
 
 public class FlashSale {
-    private int img;
-    private String gia,sell;
+    private int id;
+    private String gia,sell, img;
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
 
     public FlashSale() {
     }
@@ -32,14 +25,26 @@ public class FlashSale {
         this.gia = gia;
     }
 
-    public FlashSale(int img, String gia) {
-        this.img = img;
+    public FlashSale(String gia, String sell, String img, int id) {
+        this.id = id;
         this.gia = gia;
+        this.sell = sell;
+        this.img = img;
     }
 
-    public FlashSale(int img, String gia, String sell) {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
         this.img = img;
-        this.sell = sell;
-        this.gia = gia;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

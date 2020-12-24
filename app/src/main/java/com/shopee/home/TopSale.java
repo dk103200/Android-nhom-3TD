@@ -1,30 +1,39 @@
 package com.shopee.home;
 
 public class TopSale {
-    private int img;
-    private String gia;
+    private String gia,img;
+    private int id;
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
+    }
+
+    public TopSale() {
     }
 
     public String getGia() {
         return gia;
     }
 
-    public TopSale() {
-    }
-
     public void setGia(String gia) {
         this.gia = gia;
     }
 
-    public TopSale(int img, String gia) {
-        this.img = img;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public TopSale(String gia, String img, int id) {
         this.gia = gia;
+        this.img = img;
+        this.id = id;
     }
 }

@@ -209,7 +209,8 @@ public class DetailProductActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(DetailProductActivity.this, CartActivity.class);
+
+                Intent myIntent = new Intent(getBaseContext(), CartActivity.class);
                 startActivity(myIntent);
             }
         });
